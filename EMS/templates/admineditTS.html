@@ -1,0 +1,469 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <link rel="stylesheet" href="/static/css/style.css">
+
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+        <title>Responsive Registration Form</title>
+
+    </head>
+    <body>
+        <div class="container">
+            <header>Edit Employee Details</header>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form first">
+                    <div class="details">
+                        <span class="title">Personal Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>First Name</label>
+                                <input type="text" name="firstname" placeholder="Enter your First name" value="{{employee.user.first_name}}">
+                            </div>
+                            <div class="input-field">
+                                <label>Last Name</label>
+                                <input type="text" name="lastname"  placeholder="Enter your Last name" value="{{employee.user.last_name}}" required>
+                            </div>
+                        
+                            <div class="input-field">
+                                <label>Date of Birth[{{employee.DOB}}]</label>
+                                <input type="date" name="DOB" placeholder="Enter your birth date" >
+                            </div>
+                            <div class="input-field">
+                                <label>Email</label>
+                                <input type="text" value="{{employee.user.username}}" placeholder="Enter your email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" readonly required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Alternative Email</label>
+                                <input type="text" name="altemail" value="{{employee.altemail}}" placeholder="Enter your Alternative email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$">
+                            </div>
+
+                            <div class="input-field">
+                                <label>Mobile Number</label>
+                                <input type="text"  name="mob" value="{{employee.mob}}" placeholder="Enter your Mobile Number" pattern="[0-9]+" required>
+                
+                            </div>
+                        
+                            <div class="input-field">
+                                <label>Alternative Number</label>
+                                <input type="text" name="altmob" value="{{employee.altmob}}" placeholder="Enter your Alternative Number" >
+                            </div>
+                            <div class="input-field">
+                                <label>Gender[{{employee.gender}}]</label>
+                                <select name="gender" value="{{employee.gender}}" class="form-control" required>
+                                    <option value="None">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                    
+                            <div class="input-field">
+                                <label>Aadhar Number</label>
+                                <input type="text" name="adhar" value="{{a}}" pattern=".{12}" placeholder="Enter your Aadhar Number" required>   
+                            </div>
+
+                            <div class="input-field">
+                                <label>Pan Number</label>
+                                <input type="text" name="pan" value="{{p}}" pattern=".{10}" placeholder="Enter your Pan Number" required>
+                            </div>   
+                        
+                            <div class="input-field">
+                                <label>Marital Status[{{employee.mstatus}}]</label>
+                                <select name="marital Status" class="form-control" required>
+                                    <option value="None">Select Your Marital Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Separated">Separated</option>
+                                    </select>
+                            </div>
+                            <div class="input-field">
+                                <label>Blood Group[{{employee.bloodgroup}}]</label>
+                                <select name="bloodgroup" class="form-control" value="{{employee.bloodgroup}}">
+                                    <option value="None">Select your Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="B+">B+</option>
+                                    <option value="O+">O+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB">AB</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                        <div class="details ID">
+                            <span class="title">Job Details</span>
+    
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Employee ID</label>
+                                    <input type="text" name="eid" value="{{employee.empid}}" placeholder="Enter your ID Number">
+                                </div>
+                            
+                                <div class="input-field">
+                                    <label>Joining Date[{{employee.joiningdate}}]</label>
+                                    <input type="date" name="jd" value="{{employee.joiningdate}}" placeholder="Enter Joining Date">
+                                </div>
+                                <div class="input-field">
+                                    <label>Work Location</label>
+                                    <input type="text" name="wl" value="{{employee.worklocation}}" placeholder="Enter Your Work Location">
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Designation[{{emp.desg}}]</label>
+                                    <select name="des" value="{{emp.desg}}" class="form-control" required>
+                                        <option value="None">Select Your Designation</option>
+                                        <option value="Principal">Principal</option>
+                                        <option value="Professor">Professor</option>
+                                        <option value="Asst. Professor">Asst. Professor</option>
+                                        <option value="HOD">HOD</option>
+                                        <option value="Lecturer">Lecturer</option>
+                                        <option value="Registrar">Registrar</option>
+                                        <option value="Technical Assistant">Technical Assistant</option>
+                                        <option value="Asso. Professor">Asso. Professor</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Total Work Experience</label>
+                                    <input type="text" name="twe" value="{{employee.workexperience}}" placeholder="Enter your Total Work Experience" >
+                                </div>
+                                
+                                
+                                <div class="input-field">
+                                    <label>Department[{{emp.dept}}]</label>
+                                    <select name="department" class="form-control" value="{{emp.dept}}">
+                                        <option value="None">Select Your Department</option>
+                                        <option value="MCA">MCA</option>
+                                        <option value="ECE">ECE</option>
+                                        <option value="ME">ME</option>
+                                        <option value="EE">EE</option>
+                                        <option value="IT">IT</option>
+                                        <option value="CE">CE</option>
+                                        <option value="CSE">CSE</option>
+                                        <option value="BCA">BCA</option>
+                                        <option value="MBA">MBA</option>
+                                        <option value="BBA">BBA</option>
+                                    </select>
+                                </div>
+                                 
+                            
+                            
+                            </div>
+                           </div>
+                
+
+                
+                    <div class="details address">
+                        <span class="title">Present Address</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>House no./Block no.</label>
+                                <input type="text" value="{{employee.presenthousenum}}" name="presenthn" placeholder="Enter your House no./Block no.">
+                            </div>
+                        
+                            <div class="input-field">
+                                <label>Street Name</label>
+                                <input type="text" name="presentsn" value="{{employee.presentstreet}}"  placeholder="Enter your Street Name">
+                            </div>
+
+                            <div class="input-field">
+                                <label>City</label>
+                                <input type="text" name="presentcn" value="{{employee.presentcity}}"placeholder="Enter your City">
+                
+                            </div>
+
+                            <div class="input-field">
+                                <label>District</label>
+                                <input type="text" name="presentdn" value="{{employee.presentdist}}" placeholder="Enter your District">
+                
+                            </div>
+                            <div class="input-field">
+                                <label>State[{{employee.presentstate}}]</label>
+                                <select name="presentState" class="form-control" value="{{employee.presentstate}}">
+                                    <option value="None">Select Issued State</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Uttarkhand">Uttarkhand</option>
+                                </select>
+                            </div>
+
+                            
+                            <div class="input-field">
+                                <label>Postal Code/Zip Code</label>
+                                <input type="number" name="presentzip" value="{{employee.presentzip}}" placeholder="Enter your Postal Code">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details address">
+                        <span class="title">Permanent Address</span>
+
+                    <div class="fields">
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>House no./Block no.</label>
+                                <input type="text" name="permhn" value="{{employee.curhousenum}}" placeholder="Enter your House no./Block no." >
+                            </div>
+                        
+                            <div class="input-field">
+                                <label>Street Name</label>
+                                <input type="text" name="permsn" value="{{employee.curstreet}}" placeholder="Enter your Street Name" >
+                            </div>
+
+                            <div class="input-field">
+                                <label>City</label>
+                                <input type="text" name="permcn" value="{{employee.curcity}}" placeholder="Enter your City" >
+                
+                            </div>
+
+                            <div class="input-field">
+                                <label>District</label>
+                                <input type="text" name="permdn" value="{{employee.curdist}}" placeholder="Enter your District" >
+                
+                            </div>
+                            <div class="input-field">
+                                <label>State[{{employee.curstate}}]</label>
+                                <select name="permState" class="form-control" value="{{employee.curstate}}">
+                                    <option value="None">Select State</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Uttarkhand">Uttarkhand</option>
+                                </select>
+                            </div>
+
+                            
+                            <div class="input-field">
+                                <label>Postal Code/Zip Code</label>
+                                <input type="number" name="permzip" value="{{employee.curzip}}" placeholder="Enter your Postal Code">
+                               
+                            </div>  
+                    </div>
+                </div>
+
+
+                    
+                        <div class="details education">
+                            <span class="title">Educational Details</span>
+    
+                            <div class="fields">
+                                
+                               
+                                <div class="input-field1">
+                                    <label>Name of Examination(10th Standard)</label>
+                                    <input type="text" name="noe10" value="{{emp.noe10}}" placeholder="Enter Name of Examination" required>
+                                </div>
+                                <div class="input-field1">
+                                    <label>Board(10th Standard)</label>
+                                    <input type="text" name="board10" value="{{emp.board10}}" placeholder="Enter Board Name" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Marks Obtained % (10th Standard)</label>
+                                    <input type="number" name="marks10" value="{{emp.marks10}}" placeholder="Enter Your Marks" id="float-input" name="float-input" 
+                                    pattern="[0-9]*[.,]?[0-9]*" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Year of Passing(10th Standard)[{{emp.yop10}}]</label>
+                                    <input type="date" name="yop10" value="{{emp.yop10}}" placeholder="Enter Year">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Name of Examination(12th Standard)</label>
+                                    <input type="text" name="noe12" value="{{emp.noe12}}" placeholder="Enter Name of Examination" required>
+                                </div>
+                                <div class="input-field1">
+                                    <label>Board(12th Standard)</label>
+                                    <input type="text" name="board12" value="{{emp.board12}}" placeholder="Enter Board Name" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Marks Obtained % (12th Standard)</label>
+                                    <input type="number" name="marks12" value="{{emp.marks12}}" placeholder="Enter Your Marks" id="float-input" name="float-input" 
+                                    pattern="[0-9]*[.,]?[0-9]*" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Year of Passing(12th Standard)[{{emp.yop12}}]</label>
+                                    <input type="date" name="yop12" value="{{emp.yop12}}" placeholder="Enter Year">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Degree(Graduation) </label>
+                                    <input type="text" name="deg" value="{{emp.noedegree}}" placeholder="Enter Degree" required>
+                                </div>
+                                <div class="input-field1">
+                                    <label>University(Graduation) </label>
+                                    <input type="text" name="uni" value="{{emp.uni}}" placeholder="Enter University Name" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Marks Obtained % (Graduation)</label>
+                                    <input type="number" name="marksdeg" value="{{emp.marksdeg}}" placeholder="Enter Your Marks" id="float-input" name="float-input" 
+                                    pattern="[0-9]*[.,]?[0-9]*" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Year of Passing(Graduation)[{{emp.yopdeg}}] </label>
+                                    <input type="date" name="yopdeg" value="{{emp.yopdeg}}" placeholder="Enter Year">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Degree (Post Graduation) </label>
+                                    <input type="text" name="npg" value="{{emp.npg}}" placeholder="Enter Degree" required>
+                                </div>
+                                <div class="input-field1">
+                                    <label>University(Post Graduation) </label>
+                                    <input type="text" name="unipg" value="{{emp.unipg}}" placeholder="Enter University Name" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Marks Obtained % (Post Graduation) </label>
+                                    <input type="number" name="markspg" value="{{emp.markspg}}" placeholder="Enter Your Marks" id="float-input" name="float-input" 
+                                    pattern="[0-9]*[.,]?[0-9]*" required>
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Year of Passing(Post Graduation)[{{emp.yoppg}}] </label>
+                                    <input type="date" name="yoppg" value="{{emp.yoppg}}" placeholder="Enter Year" >
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>University(Doctorate)</label>
+                                    <input type="text" name="unidoc" value="{{emp.unidoc}}" placeholder="Enter University Name">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label> Stream(Doctorate)</label>
+                                    <input type="text" name="streamdoc" value="{{emp.stramdoc}}" placeholder="Enter Your Stream">
+                                </div>
+                                <div class="input-field1">
+                                    <label>Date of Registration(Doctorate)[{{emp.dreg}}]</label>
+                                    <input type="date" name="dreg" value="{{emp.dreg}}" placeholder="Enter Year">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Year of Passing(Doctorate)[{{emp.yopdoc}}]</label>
+                                    <input type="date" name="yopdoc" value="{{emp.yopdoc}}" placeholder="Enter Year">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>University(Post Doctorate) </label>
+                                    <input type="text" name="unipdoc" value="{{emp.unipdoc}}" placeholder="Enter University Name">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Stream(Post Doctorate)</label>
+                                    <input type="text" name="streampdoc" value="{{emp.strampdoc}}" placeholder="Enter Your Stream">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>Start Date(Post Doctorate)[{{emp.stdate}}] </label>
+                                    <input type="date" name="stdate" value="{{emp.stdate}}" placeholder="Enter Year">
+                                </div>
+
+                                <div class="input-field1">
+                                    <label>End Date(Post Doctorate)[{{emp.enddate}}]</label>
+                                    <input type="date" name="enddate" value="{{emp.enddate}}" placeholder="Enter Year">
+                                </div>
+
+
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="buttons">
+                        <div class="submitBtn">
+                            <button type="submit" value="Submit">SUBMIT</button>
+                        </div>
+
+                        <br>
+                            <div class="resetBtn">
+                            <button type="reset" value="Reset">RESET</button>
+                            </div>
+                        
+                      </div>
+
+                            
+                                            
+                                    
+                                    
+
+        
+                                  
+                            
+                                 
+                    
+            </div>
+        </form>
+    </div>
+    {% if error == "no" %}
+        <script>
+            alert('profile updated successfully');
+            
+        </script>
+    {% endif %}
+    {% if error == "yes" %}
+        <script>
+            alert('Something went wrong. Try again....');
+
+        </script>
+    {% endif %}
+    
+    <div class="logout-container" style="position: absolute;
+    top: 10px; 
+    right: 10px;">
+        <button class="logout-button" style="background-color: #080707;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        transition: all 0.3s linear;"><a style="color: #fff;" href="/gobacktoadmin">Back to home</a></button>
+    </div>
+
+
+    </body>
+</html>
